@@ -1,0 +1,1126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Hub 💰 | Take Control of Your Finances</title>
+    
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add this with your other scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode using a class
+            theme: {
+                extend: {
+                    colors: {
+                        pink: {
+                            600: '#DF1783',
+                            700: '#C1146E'
+                        },
+                        purple: { // Added purple for consistency if needed
+                            600: '#7C3AED'
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        caveat: ['Caveat', 'cursive'],
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <style>
+        :root {
+            --pink-600: #DF1783;
+            --pink-700: #C1146E;
+            --purple-600: #7C3AED;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #f9fafb);
+            color: #1f2937;
+        }
+        .dark body {
+            background: linear-gradient(to bottom, #111827, #0f172a); /* Dark gradient */
+            color: #d1d5db; /* Default dark text color */
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #fdf2f8, #f5f3ff);
+        }
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #372834, #2c2a3e); /* Darker hero gradient */
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .dark .feature-card {
+            border-color: #374151; /* Dark border for feature cards */
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .feature-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(223, 23, 131, 0.1), 0 10px 10px -5px rgba(223, 23, 131, 0.05); /* Adjusted shadow for dark */
+        }
+        
+        /* Adjust the timeline marker positioning */
+        .timeline-marker {
+            position: absolute;
+            left: 2px;
+            top: 1.5rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 9999px;
+            background: #DF1783;
+            border: 4px solid #f8fafc; /* Light theme background */
+            box-sizing: content-box;
+            transform: translateX(-50%);
+        }
+        
+        .dark .timeline-marker {
+            background: #EC4899; /* Brighter pink for dark mode */
+            border-color: #1f2937; /* Dark theme section background (adjust if section bg changes) */
+        }
+
+        @media (min-width: 640px) {
+            .timeline-marker {
+                left: 6.5rem;
+            }
+        }
+
+        /* Adjust the timeline line */
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: #e2e8f0; /* Light theme line */
+            transform: translateX(-50%);
+        }
+        
+        .dark .timeline-item:before {
+            background: #4b5563; /* Dark theme line */
+        }
+
+        @media (min-width: 640px) {
+            .timeline-item:before {
+                left: 6.5rem;
+            }
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .dark .faq-item {
+            border-color: #374151; /* Dark border for FAQ items */
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-content.active {
+            max-height: 500px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+       
+       .dark .video-container {
+             box-shadow: 0 20px 25px -5px rgba(223, 23, 131, 0.1), 0 10px 10px -5px rgba(223, 23, 131, 0.05);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: inherit;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--pink-600), var(--purple-600));
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(223, 23, 131, 0.3), 0 4px 6px -2px rgba(223, 23, 131, 0.1);
+        }
+        .dark .cta-button:hover {
+             box-shadow: 0 10px 15px -3px rgba(223, 23, 131, 0.5), 0 4px 6px -2px rgba(223, 23, 131, 0.2);
+        }
+        
+        .shiny-effect {
+          animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+          0% { transform: translateX(-100%) skewX(-15deg); }
+          20% { transform: translateX(100%) skewX(-15deg); }
+          100% { transform: translateX(100%) skewX(-15deg); }
+        }
+        
+        #backToTopBtn {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+  
+          .shine-border {
+          position: relative;
+          border-radius: 1rem; 
+          padding: 3px; 
+          background: linear-gradient(120deg, #ec4899, #8b5cf6, #ec4899);
+          background-size: 300% 300%;
+          animation: shineAnim 3s linear infinite;
+          display: inline-block; 
+          width: 100%; 
+        }
+        
+        .shine-border > div { 
+          border-radius: calc(1rem - 3px); 
+          background-color: white; 
+          width: 100%;
+          height: 100%;
+          padding: 2rem; 
+        }
+
+        .dark .shine-border > div {
+            background-color: #1f2937; 
+        }
+
+
+        @keyframes shineAnim {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+<script>
+    // Minimal script to set theme ASAP to prevent FOUC
+    (function() {
+        const theme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (theme === 'dark' || (!theme && systemPrefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    })();
+</script>
+</head>
+
+
+<body class="bg-white dark:bg-slate-900 text-gray-800 dark:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="w-full bg-white shadow-sm border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 py-4 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+               
+                
+                
+                
+                        
+              <!-- Logo -->
+<div class="flex-shrink-0 flex items-center">
+    <!-- Light mode logo -->
+    <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center dark:hidden">
+        <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-white"></i>
+    </div>
+    
+    <!-- Dark mode logo (slightly darker gradient) -->
+    <div class="w-10 h-10 bg-gradient-to-br from-pink-600 to-purple-700 rounded-lg flex items-center justify-center hidden dark:flex">
+        <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-white"></i>
+    </div>
+    
+    <span class="ml-3 text-xl font-semibold text-gray-800 dark:text-white">Financial Hub 💰</span>
+</div>
+                   
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">Features</a>
+                    <a href="#watch-demo" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">Watch Demo</a>
+                    
+           <a href="#how-it-works" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">How It Works</a>         
+                    
+                    
+                    
+                    <a href="#pricing" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">Pricing</a>
+                    <a href="#faq" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">FAQ</a>
+                </nav>
+                
+                <!-- Theme Toggle and Login Button -->
+                <div class="flex items-center">
+                     <button id="theme-toggle" type="button" class="mr-2 sm:mr-4 p-2 rounded-full text-gray-500 hover:text-pink-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-pink-500 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 dark:focus:ring-offset-gray-800" aria-label="Toggle theme">
+                        <i id="theme-toggle-dark-icon" data-lucide="moon" class="w-5 h-5 hidden"></i>
+                        <i id="theme-toggle-light-icon" data-lucide="sun" class="w-5 h-5 hidden"></i>
+                    </button>
+                    <a href="#" 
+                       class="cta-button text-white font-medium py-2 px-6 rounded-full text-sm md:text-base">
+                        Member Access
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    
+    
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-40 md:pt-48 pb-20"> <!-- Increased top padding for fixed header -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+               <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-gray-900 dark:text-white">
+    <span class="block">Take Control of Your Finances with</span>
+    <span class="block mt-2">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">Financial Hub</span>
+        <span class="text-gray-900 dark:text-white"> 💰</span>
+    </span>
+</h1>
+                
+                
+                
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
+                    Your all-in-one solution for smart budgeting, effortless expense tracking, and insightful financial reporting.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#pricing" class="cta-button text-white font-bold py-4 px-8 rounded-full text-lg inline-flex items-center justify-center">
+                        Get Started Today
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                    <a href="#how-it-works" class="bg-white text-gray-800 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 font-medium py-4 px-8 rounded-full border border-gray-200 dark:border-gray-600 text-lg inline-flex items-center justify-center hover:shadow-md transition-shadow">
+                        <i data-lucide="info" class="mr-2 w-5 h-5"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-16 max-w-8xl mx-auto">
+                                    
+                        <div class="p-2 overflow-hidden">
+                            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/23d6f31a2a68ddd91aa7cf976dd9a26ed3de78a0.gif" 
+                                 alt="Financial Hub Dashboard Preview" class="w-full">
+      <img src="your-new-image.jpg" alt="" class="w-full">
+                                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Features -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Unlock Your <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Financial Potential</span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Our comprehensive toolkit helps you manage budgets, track expenses, and gain insights to achieve your financial goals.
+            </p>
+        </div>
+            
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1: Smart Budgeting -->
+            <div class="feature-card bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-sm">
+                <div class="w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="piggy-bank" class="w-8 h-8 text-pink-600 dark:text-pink-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Smart Budgeting & Planning</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    Create personalized budgets, set financial goals, and plan for your future with our intuitive tools.
+                </p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-pink-600 dark:text-pink-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Customizable budget categories</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-pink-600 dark:text-pink-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Goal setting & tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-pink-600 dark:text-pink-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Future financial projections</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Feature 2: Effortless Expense Tracking -->
+            <div class="feature-card bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-sm">
+                <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="credit-card" class="w-8 h-8 text-purple-600 dark:text-purple-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Effortless Expense Tracking</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    Monitor your spending, categorize transactions, and identify areas to save. Pro features include Dominican currency & recurring transactions.
+                </p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-purple-600 dark:text-purple-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Automatic transaction import (Pro)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-purple-600 dark:text-purple-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Recurring transaction management (Pro)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-purple-600 dark:text-purple-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Spending insights & reports</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Feature 3: Insightful Financial Reporting -->
+            <div class="feature-card bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-sm">
+                <div class="w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="pie-chart" class="w-8 h-8 text-pink-600 dark:text-pink-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Insightful Financial Reporting</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    Gain a clear overview of your financial health with comprehensive reports and visualizations.
+                </p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                   <li class="flex items-start">
+                       <i data-lucide="check" class="w-5 h-5 text-pink-600 dark:text-pink-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Cash flow statements</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-pink-600 dark:text-pink-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Net worth tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check" class="w-5 h-5 text-pink-600 dark:text-pink-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                        <span>Exportable reports</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </section>
+    
+    <!-- Video Introduction -->
+    <section id="watch-demo" class="pt-24 pb-20 bg-gradient-to-br from-pink-600 to-purple-600 dark:from-pink-800 dark:to-purple-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    See Financial Hub in Action
+                </h2>
+                <p class="text-xl text-pink-100 max-w-3xl mx-auto">
+                    Discover how our platform simplifies financial management and empowers you to achieve your goals.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="video-container overflow-hidden shadow-xl rounded-[20px]">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+                
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-white dark:bg-slate-700 rounded-xl shadow-lg">
+                        <div id="countUpTools" class="text-3xl font-bold text-pink-600 dark:text-pink-500 mb-2">15+</div>
+                        <div class="text-gray-700 dark:text-gray-300">Financial Tools</div>
+                    </div>
+                    <div class="text-center p-6 bg-white dark:bg-slate-700 rounded-xl shadow-lg">
+                        <div id="countUpPhases" class="text-3xl font-bold text-pink-600 dark:text-pink-500 mb-2">+5</div>
+                        <div class="text-gray-700 dark:text-gray-300">Multi-Currency Support</div>
+                    </div>
+                    <div class="text-center p-6 bg-white dark:bg-slate-700 rounded-xl shadow-lg">
+                        <div id="countUpSuccess" class="text-3xl font-bold text-pink-600 dark:text-pink-500 mb-2">90%</div>
+                        <div class="text-gray-700 dark:text-gray-300">User Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- How It Works Section (Timeline) -->
+    <section id="how-it-works" class="bg-white dark:bg-gray-900">
+        <div class="bg-gray-50 dark:bg-slate-800 p-0 mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center pt-20">
+                🚀 Get Started with <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Financial Hub</span> in Minutes
+            </h2>
+            <div class="flex justify-center">
+                <div class="w-full max-w-2xl">
+                    <div class="space-y-8">
+                        <!-- Step 1 -->
+                        <div class="relative pl-8 sm:pl-32 py-6 group timeline-item">
+                            <div class="font-caveat font-medium text-2xl text-pink-600 dark:text-pink-400 mb-1 sm:mb-0">Step 1</div>
+                            <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden">
+                                <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-pink-600 bg-pink-100 dark:text-pink-200 dark:bg-pink-700/50 rounded-full">Sign Up</time>
+                                <div class="text-xl font-bold text-slate-900 dark:text-slate-100">Sign Up & Secure Account</div>
+                                <div class="timeline-marker"></div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Fast and easy registration process</li>
+                                    <li>Secure your data with bank-level encryption</li>
+                                    <li>Optionally connect your bank accounts (Pro)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="relative pl-8 sm:pl-32 py-6 group timeline-item">
+                            <div class="font-caveat font-medium text-2xl text-pink-600 dark:text-pink-400 mb-1 sm:mb-0">Step 2</div>
+                            <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden">
+                                <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-pink-600 bg-pink-100 dark:text-pink-200 dark:bg-pink-700/50 rounded-full">Setup</time>
+                                <div class="text-xl font-bold text-slate-900 dark:text-slate-100">Create Your Budgets</div>
+                                <div class="timeline-marker"></div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Define your income sources and amounts</li>
+                                    <li>Allocate funds to customizable spending categories</li>
+                                    <li>Set savings goals and track your progress</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="relative pl-8 sm:pl-32 py-6 group timeline-item">
+                            <div class="font-caveat font-medium text-2xl text-pink-600 dark:text-pink-400 mb-1 sm:mb-0">Step 3</div>
+                            <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden">
+                                <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-pink-600 bg-pink-100 dark:text-pink-200 dark:bg-pink-700/50 rounded-full">Track</time>
+                                <div class="text-xl font-bold text-slate-900 dark:text-slate-100">Monitor Your Transactions</div>
+                                <div class="timeline-marker"></div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Automatically import transactions (Pro) or add manually</li>
+                                    <li>Categorize expenses for clear insights</li>
+                                    <li>Manage recurring payments and subscriptions (Pro)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="relative pl-8 sm:pl-32 py-6 group timeline-item">
+                            <div class="font-caveat font-medium text-2xl text-pink-600 dark:text-pink-400 mb-1 sm:mb-0">Step 4</div>
+                            <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden">
+                                <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-pink-600 bg-pink-100 dark:text-pink-200 dark:bg-pink-700/50 rounded-full">Analyze</time>
+                                <div class="text-xl font-bold text-slate-900 dark:text-slate-100">Review & Optimize</div>
+                                <div class="timeline-marker"></div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Access detailed financial reports and charts</li>
+                                    <li>Identify spending patterns and areas for improvement</li>
+                                    <li>Adjust your budgets based on real data</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 5 -->
+                        <div class="relative pl-8 sm:pl-32 py-6 group timeline-item">
+                            <div class="font-caveat font-medium text-2xl text-pink-600 dark:text-pink-400 mb-1 sm:mb-0">Step 5</div>
+                            <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden">
+                                <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-pink-600 bg-pink-100 dark:text-pink-200 dark:bg-pink-700/50 rounded-full">Achieve</time>
+                                <div class="text-xl font-bold text-slate-900 dark:text-slate-100">Reach Your Financial Goals</div>
+                                <div class="timeline-marker"></div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Stay on track with savings, debt reduction, or investments</li>
+                                    <li>Receive personalized tips and insights</li>
+                                    <li>Build a healthier financial future</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="mt-0">
+              <img 
+                src="https://bucket.mlcdn.com/a/3336/3336910/images/9bc641a7bc9141260897e35bb9b17a0de8bee032.png" 
+                alt="Financial Planning Banner"
+                class="w-full h-auto object-cover rounded-lg"
+                loading="lazy"
+              >
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quote Banner -->
+    <div class="bg-gradient-to-r from-pink-600 to-purple-600 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto text-center">
+            <blockquote class="text-white">
+                <p class="text-xl sm:text-2xl font-medium italic leading-relaxed">
+                    "A budget is telling your money where to go instead of wondering where it went."
+                    <span class="block mt-4 font-bold text-white/90">Take control, plan smart, and live better.</span>
+                </p>
+                <footer class="mt-6 text-white/80">
+                    <cite class="font-semibold not-italic">— Inspired by Dave Ramsey</cite>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    Everything you need to know about Financial Hub 💰
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-gray-50 dark:bg-slate-800 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center" onclick="toggleFAQ(1)" aria-expanded="false" aria-controls="content-1">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Is my financial data secure with Financial Hub?</h3>
+                        <i id="icon-1" data-lucide="chevron-down" class="w-6 h-6 text-pink-600 dark:text-pink-500 transform transition-transform"></i>
+                    </button>
+                    <div id="content-1" class="faq-content px-6 pb-6 text-gray-600 dark:text-gray-400" role="region" aria-labelledby="faq-item-1-button">
+                        <p>
+                            Absolutely. We prioritize your data security with bank-level encryption (AES-256), secure servers, and regular security audits. We never sell your personal information and adhere to strict privacy policies. You own your data, always.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-gray-50 dark:bg-slate-800 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center" onclick="toggleFAQ(2)" aria-expanded="false" aria-controls="content-2">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">What currencies does Financial Hub support?</h3>
+                        <i id="icon-2" data-lucide="chevron-down" class="w-6 h-6 text-pink-600 dark:text-pink-500 transform transition-transform"></i>
+                    </button>
+                    <div id="content-2" class="faq-content px-6 pb-6 text-gray-600 dark:text-gray-400" role="region" aria-labelledby="faq-item-2-button">
+                        <p>
+                            Financial Hub supports a wide range of major global currencies. Our Pro plan includes specialized support for additional currencies, including the Dominican Peso (DOP), allowing for accurate tracking and budgeting in your local currency.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-gray-50 dark:bg-slate-800 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center" onclick="toggleFAQ(3)" aria-expanded="false" aria-controls="content-3">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Can I manage recurring transactions and operations?</h3>
+                         <i id="icon-3" data-lucide="chevron-down" class="w-6 h-6 text-pink-600 dark:text-pink-500 transform transition-transform"></i>
+                    </button>
+                    <div id="content-3" class="faq-content px-6 pb-6 text-gray-600 dark:text-gray-400" role="region" aria-labelledby="faq-item-3-button">
+                        <p>
+                            Yes! Our Pro plan offers robust features for managing recurring transactions, such as subscriptions, loan payments, and regular income. You can set them up once, and Financial Hub will automatically track them, ensuring your budget stays accurate. Advanced operations like splitting transactions are also available in Pro.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-gray-50 dark:bg-slate-800 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center" onclick="toggleFAQ(4)" aria-expanded="false" aria-controls="content-4">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">What kind of customer support do you offer?</h3>
+                        <i id="icon-4" data-lucide="chevron-down" class="w-6 h-6 text-pink-600 dark:text-pink-500 transform transition-transform"></i>
+                    </button>
+                    <div id="content-4" class="faq-content px-6 pb-6 text-gray-600 dark:text-gray-400" role="region" aria-labelledby="faq-item-4-button">
+                        <p>
+                            We offer comprehensive support to all users, including a detailed knowledge base and email support. Pro and Lifetime Deal users receive priority support via email and live chat (during business hours) to help with any questions or issues promptly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gradient-to-br from-pink-50 to-purple-50 dark:from-slate-800 dark:to-pink-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                Choose Your <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Financial Hub Plan</span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+              Start managing your finances smarter today.<br>Pick the plan that's right for you.
+            </p><br>
+
+            
+            
+            
+            
+            
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-2">
+                <!-- Free Tier -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Free Plan</h3>
+                        <p class="text-4xl font-extrabold text-gray-900 dark:text-white mb-1">$0<span class="text-base font-medium text-gray-500 dark:text-gray-400">/mth</span></p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Basic tools to get started.</p>
+                        <ul class="space-y-3 mb-8 text-left text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Basic Budgeting</li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Manual Transaction Entry</li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Standard Reports</li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Limited Categories</li>
+                        </ul>
+                    </div>
+                    
+                    
+     <a href="#" class="mt-auto relative inline-flex items-center justify-center text-gray-900 dark:text-white font-medium py-3 px-6 rounded-full w-full group transition-all duration-300">
+  <!-- 3px gradient border (adapts to theme) -->
+  <span class="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-500 dark:to-purple-500">
+    <!-- Background fill (theme-adaptive) -->
+    <span class="w-full h-full flex items-center justify-center rounded-full bg-white dark:bg-gray-800 transition-all duration-300 group-hover:bg-opacity-90"></span>
+  </span>
+  
+  <!-- Text content with subtle hover animation -->
+  <span class="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
+    Get Started Free
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-2">
+      <path d="M5 12h14"/>
+      <path d="m12 5 7 7-7 7"/>
+    </svg>
+  </span>
+</a>
+
+</div>
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- Pro Tier (Highlighted) -->
+                <div class="shine-border rounded-xl"> 
+                    <div class="bg-white dark:bg-slate-800 rounded-[calc(1rem-3px)] shadow-2xl p-8 flex flex-col justify-between relative scale-105 md:scale-110 h-full"> 
+                         <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">Most Popular</span>
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 mt-3">Pro Plan</h3>
+                            <p class="text-4xl font-extrabold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-1">$9.99<span class="text-base font-medium text-gray-500 dark:text-gray-400">/mth</span></p>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6">Unlock powerful financial tools.</p>
+                            <ul class="space-y-3 mb-8 text-left text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>All Free Features, Plus:</li>
+                                <li class="flex items-start font-semibold"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Dominican Peso (DOP) Support</li>
+                                <li class="flex items-start font-semibold"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Recurring Transactions</li>
+                                <li class="flex items-start font-semibold"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Advanced Operations</li>
+                                <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Automatic Bank Sync (Optional)</li>
+                                <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Unlimited Categories</li>
+                                <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Advanced Reporting & Analytics</li>
+                                <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Priority Support</li>
+                            </ul>
+                        </div>
+                        
+                        
+                       <a href="#" class="mt-auto relative overflow-hidden group text-white font-bold py-3 px-6 rounded-full w-full bg-gradient-to-r from-pink-600 to-purple-600 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
+    <!-- Shiny overlay effect -->
+    <span class="absolute inset-0 bg-gradient-to-r from-white/20 via-white/50 to-white/20 opacity-0 group-hover:opacity-100 transition-all duration-700 transform -translate-x-full group-hover:translate-x-full shiny-effect"></span>
+    
+    <!-- Button content with arrow icon -->
+    <span class="relative z-10 flex items-center justify-center gap-2">
+        Upgrade to Pro
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+        </svg>
+    </span>
+</a>
+
+                    </div>
+                </div>
+                
+                
+                
+                
+
+               
+               <!-- Lifetime Deal Tier -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Lifetime Plan</h3>
+                         <div class="text-4xl font-extrabold text-gray-900 dark:text-white mb-1">$199<span class="text-base font-medium text-gray-500 dark:text-gray-400">/One-time</span>
+                         </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">All Pro features, forever.</p>
+                        <ul class="space-y-3 mb-8 text-left text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>All Pro Features</li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Lifetime Updates</li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Exclusive Community Access</li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>One-Time Payment</li>
+                        </ul>
+                    </div>
+                     <a href="#" class="mt-auto relative overflow-hidden group text-white font-bold py-3 px-6 rounded-full w-full bg-gradient-to-r from-pink-600 to-purple-600 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
+    <!-- Button content with arrow icon -->
+    
+    <span class="relative flex items-center justify-center gap-2">
+        Get Lifetime Access
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+        </svg>
+    </span>
+</a>
+                </div>
+            </div>
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             <div class="mt-16 text-gray-500 dark:text-gray-400 text-sm">
+                Secure payments processed by PayPal<br>Your Satifaction is guaranteed.
+            </div>
+               
+            
+            <div class="flex justify-center items-center space-x-4 mt-4">
+              <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Pay with:</span>
+              <img src="https://github.com/Bebell-Digital-Solutions/lp-market-research-hub/raw/refs/heads/main/assets/logo-paypal.svg" alt="PayPal" class="h-7 w-auto">
+              
+              
+              <img src="https://github.com/Bebell-Digital-Solutions/lp-market-research-hub/raw/refs/heads/main/assets/visa%20(3).svg" alt="Visa" class="h-7 w-auto">
+              
+     
+              <img src="https://github.com/Bebell-Digital-Solutions/lp-market-research-hub/raw/refs/heads/main/assets/mastercard%20(1).svg" alt="Mastercard" class="h-7 w-auto">
+              
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-gray-400 dark:bg-black dark:text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-white"></i>
+                    </div>
+                </div>
+                
+                <p class="text-lg mb-6 text-gray-300 dark:text-gray-400">
+                    Your partner in achieving financial freedom.
+                </p>
+                
+                 <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 dark:hover:text-pink-400" aria-label="YouTube"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Twitter"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Linkedin"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Whatsapp"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
+                </div>
+                
+                <div class="text-sm">
+                    <p class="mb-4">
+                        Powered with 💖 by Your Company Name.<br>
+                        Copyright © 2024 Financial Hub 💰 • All rights reserved
+                    </p>
+                    <div class="space-x-4">
+                        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-400">Privacy Policy</a>
+                        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-400">Terms of Service</a>
+                        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-400">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" aria-label="Back to top" title="Back to top"
+            class="fixed bottom-5 right-5 cta-button text-white p-3 rounded-full shadow-lg opacity-0 invisible z-50">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+    
+    
+    
+    
+    
+    
+    <script>
+        function toggleFAQ(faqNumber) {
+            const content = document.getElementById(`content-${faqNumber}`);
+            const icon = document.getElementById(`icon-${faqNumber}`);
+            const button = content.previousElementSibling; 
+            
+            const isActive = content.classList.toggle('active');
+            button.setAttribute('aria-expanded', isActive.toString());
+            
+            if (isActive) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        function animateValue(obj, start, endValueText, duration) {
+            let startTimestamp = null;
+            const originalText = obj.textContent; 
+            const isNumericStat = !isNaN(parseFloat(String(endValueText).replace(/[^0-9.+\-]/g, ''))) && String(endValueText).match(/[0-9]/);
+
+
+            let targetValue, prefix = "", suffix = "";
+
+            if (isNumericStat) {
+                // Extract prefix (like '+'), value, and suffix (like '%')
+                const parts = String(endValueText).match(/^([+\-])?([0-9.]+)(.*)$/);
+                if (parts) {
+                    prefix = parts[1] || "";
+                    targetValue = parseFloat(parts[2]);
+                    suffix = parts[3] || "";
+                } else { // Fallback if regex fails, treat as non-numeric
+                     setTimeout(() => { obj.textContent = endValueText; }, duration / 2);
+                     return;
+                }
+
+            } else {
+                // For non-numeric stats like "DOP", just set it directly after a short delay
+                setTimeout(() => { obj.textContent = endValueText; }, duration / 2); 
+                return;
+            }
+            
+            if (isNaN(targetValue)) {
+                 obj.textContent = originalText; // Revert to original if parsing fails
+                 return;
+            }
+            
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (targetValue - start) + start);
+                obj.textContent = prefix + currentValue + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    obj.textContent = prefix + targetValue + suffix;
+                }
+            };
+            obj.textContent = prefix + start + suffix; // Initial display
+            window.requestAnimationFrame(step);
+        }
+
+        const statsToAnimate = [
+            { id: 'countUpTools', endValueText: '15+', duration: 1500 },
+            { id: 'countUpPhases', endValueText: '+5', duration: 1000 },
+            { id: 'countUpSuccess', endValueText: '90%', duration: 1500 }
+        ];
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statConfig = statsToAnimate.find(s => s.id === entry.target.id);
+                    if (statConfig && !entry.target.dataset.animated) {
+                        animateValue(entry.target, 0, statConfig.endValueText, statConfig.duration);
+                        entry.target.dataset.animated = 'true';
+                        observer.unobserve(entry.target); 
+                    }
+                }
+            });
+        };
+        
+        const countObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize first FAQ as open
+            if (document.getElementById('content-1')) {
+                 toggleFAQ(1);
+            }
+
+            // Init Number Counting
+            statsToAnimate.forEach(stat => {
+                const el = document.getElementById(stat.id);
+                if (el) {
+                    countObserver.observe(el);
+                }
+            });
+
+            
+            
+            
+            
+            
+            
+            
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTopBtn');
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.remove('opacity-0', 'invisible');
+                        backToTopButton.classList.add('opacity-100', 'visible');
+                    } else {
+                        backToTopButton.classList.remove('opacity-100', 'visible');
+                        backToTopButton.classList.add('opacity-0', 'invisible');
+                    }
+                });
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            
+            
+            
+            
+            
+            
+
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+            function updateThemeIcons(isDark) {
+                if (isDark) {
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    themeToggleLightIcon.classList.add('hidden');
+                } else {
+                    themeToggleDarkIcon.classList.add('hidden');
+                    themeToggleLightIcon.classList.remove('hidden');
+                }
+                 if (typeof lucide !== 'undefined') { 
+                    lucide.createIcons();
+                }
+            }
+            
+            function applyTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+                updateThemeIcons(isDark);
+            }
+
+            // Initial icon setup based on current theme
+            updateThemeIcons(document.documentElement.classList.contains('dark'));
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    applyTheme(!document.documentElement.classList.contains('dark'));
+                });
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) { 
+                    applyTheme(e.matches);
+                }
+            });
+
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide icons not loaded.');
+            }
+        });
+    </script>
+    <script type="module" src="./index.tsx" defer></script>
+</body>
+</html>
