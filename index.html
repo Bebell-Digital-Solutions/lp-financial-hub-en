@@ -310,7 +310,14 @@
         }
 
 
-
+    .nav-hidden {
+        transform: translateY(-100%);
+        box-shadow: none;
+    }
+    .nav-visible {
+        transform: translateY(0);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
 
 
 
@@ -377,7 +384,8 @@
                 
                 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
+                <header id="main-nav" class="fixed w-full bg-white dark:bg-gray-900 transition-all duration-300 z-50">
+    <nav class="hidden md:flex items-center space-x-8 py-4 px-6">
                     <a href="#features" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">Features</a>
                     <a href="#watch-demo" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 font-medium">Watch Demo</a>
                     
@@ -395,7 +403,7 @@
                         <i id="theme-toggle-dark-icon" data-lucide="moon" class="w-5 h-5 hidden"></i>
                         <i id="theme-toggle-light-icon" data-lucide="sun" class="w-5 h-5 hidden"></i>
                     </button>
-                    <a href="#" 
+                    <a href="https://finance-hub-pro.elnegocio.digital/" 
                        class="cta-button text-white font-medium py-2 px-6 rounded-full text-sm md:text-base">
                         Member Access
                     </a>
@@ -1204,6 +1212,8 @@
                 updateThemeIcons(isDark);
             }
 
+           
+
             // Initial icon setup based on current theme
             updateThemeIcons(document.documentElement.classList.contains('dark'));
 
@@ -1227,5 +1237,41 @@
         });
     </script>
     <script type="module" src="./index.tsx" defer></script>
+
+
+<script>
+    let lastScroll = 0;
+    const navbar = document.getElementById('main-nav');
+    const scrollThreshold = 100; // Pixels to scroll before hiding
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            // At top of page
+            navbar.classList.remove('nav-hidden');
+            navbar.classList.add('nav-visible');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && !navbar.classList.contains('nav-hidden') {
+            // Scrolling down
+            if (currentScroll > scrollThreshold) {
+                navbar.classList.add('nav-hidden');
+                navbar.classList.remove('nav-visible');
+            }
+        } else if (currentScroll < lastScroll && navbar.classList.contains('nav-hidden')) {
+            // Scrolling up
+            navbar.classList.remove('nav-hidden');
+            navbar.classList.add('nav-visible');
+        }
+        
+        lastScroll = currentScroll;
+    });
+</script>
+
+
+
+   
 </body>
 </html>
