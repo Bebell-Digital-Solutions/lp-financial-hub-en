@@ -55,6 +55,15 @@
             --purple-600: #7C3AED;
         }
         
+        
+        .no-copy {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+        
+        
+        
         html {
             scroll-behavior: smooth;
         }
@@ -361,9 +370,9 @@
             <div class="mt-16 max-w-8xl mx-auto">
                                     
                         <div class="p-2 overflow-hidden">
-                            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/23d6f31a2a68ddd91aa7cf976dd9a26ed3de78a0.gif" 
-                                 alt="Financial Hub Dashboard Preview" class="w-full">
-      <img src="your-new-image.jpg" alt="" class="w-full">
+                            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/44ff9c67dc038023a4a659357b84916562633316.gif" 
+                                 alt="Financial Hub Dashboard Preview" class="no-copy w-full">
+      <img src="https://bucket.mlcdn.com/a/3336/3336910/images/ba7dcc73333624abe290e1a83686b8c86c48010f.png" alt="" class="no-copy w-full">
                                  
                         </div>
                     </div>
@@ -612,9 +621,9 @@
             
             <div class="mt-0">
               <img 
-                src="https://bucket.mlcdn.com/a/3336/3336910/images/9bc641a7bc9141260897e35bb9b17a0de8bee032.png" 
+                src="https://bucket.mlcdn.com/a/3336/3336910/images/17eb206a08eb7d7664b249a856e6e29dabb6a1fc.png" 
                 alt="Financial Planning Banner"
-                class="w-full h-auto object-cover rounded-lg"
+                class="no-copy w-full h-auto object-cover rounded-lg pl-10 pr-10"
                 loading="lazy"
               >
             </div>
@@ -724,7 +733,7 @@
     <section id="pricing" class="py-20 bg-gradient-to-br from-pink-50 to-purple-50 dark:from-slate-800 dark:to-pink-900/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-                Choose Your <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Financial Hub Plan</span>
+                Choose Your <span class="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Financial Hub</span> Plan
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
               Start managing your finances smarter today.<br>Pick the plan that's right for you.
@@ -737,19 +746,41 @@
             
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-2">
-                <!-- Free Tier -->
-                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Free Plan</h3>
-                        <p class="text-4xl font-extrabold text-gray-900 dark:text-white mb-1">$0<span class="text-base font-medium text-gray-500 dark:text-gray-400">/mth</span></p>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">Basic tools to get started.</p>
-                        <ul class="space-y-3 mb-8 text-left text-gray-700 dark:text-gray-300">
-                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Basic Budgeting</li>
-                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Manual Transaction Entry</li>
-                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Standard Reports</li>
-                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>Limited Categories</li>
-                        </ul>
-                    </div>
+           <!-- Free Tier -->
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 flex flex-col justify-between">
+    <div>
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Free Plan</h3>
+        <p class="text-4xl font-extrabold text-gray-900 dark:text-white mb-1">$0<span class="text-base font-medium text-gray-500 dark:text-gray-400">/month</span></p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Perfect for getting started with essential financial tools</p>
+        
+        <ul class="space-y-3 mb-8 text-left text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>
+                Basic budgeting tools
+            </li>
+            <li class="flex items-start">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>
+                Manual transaction entry
+            </li>
+            <li class="flex items-start">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>
+                Standard financial reports
+            </li>
+            <li class="flex items-start">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>
+                Multi-currency support
+            </li>
+            <li class="flex items-start">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>
+                English & Spanish language options
+            </li>
+            <li class="flex items-start">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2 mt-0.5 shrink-0"></i>
+                Limited category options
+            </li>
+        </ul>
+    </div>
+
                     
                     
      <a href="#" class="mt-auto relative inline-flex items-center justify-center text-gray-900 dark:text-white font-medium py-3 px-6 rounded-full w-full group transition-all duration-300">
@@ -891,9 +922,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="flex justify-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
-                        <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-white"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mb-4 
+            transition-all duration-300 ease-in-out 
+            hover:scale-105 hover:shadow-lg hover:from-pink-400 hover:to-purple-500
+            group">
+    <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110"></i>
+</div>
                 </div>
                 
                 <p class="text-lg mb-6 text-gray-300 dark:text-gray-400">
