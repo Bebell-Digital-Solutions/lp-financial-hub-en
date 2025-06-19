@@ -310,19 +310,6 @@
         }
 
 
-    .nav-hidden {
-        transform: translateY(-100%);
-        box-shadow: none;
-    }
-
-       
-    .nav-visible {
-        transform: translateY(0);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-
-
         
     </style>
 <script type="importmap">
@@ -1239,33 +1226,29 @@
 <script>
     let lastScroll = 0;
     const navbar = document.getElementById('main-nav');
-    const scrollThreshold = 100; // Pixels to scroll before hiding
+    const scrollThreshold = 60; // Pixels to scroll before hiding
     
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
         if (currentScroll <= 0) {
-            // At top of page
-            navbar.classList.remove('nav-hidden');
-            navbar.classList.add('nav-visible');
+            // At top of page - reset styles
+            navbar.style.transform = 'translateY(0)';
             return;
         }
         
-        if (currentScroll > lastScroll && !navbar.classList.contains('nav-hidden') {
-            // Scrolling down
-            if (currentScroll > scrollThreshold) {
-                navbar.classList.add('nav-hidden');
-                navbar.classList.remove('nav-visible');
-            }
-        } else if (currentScroll < lastScroll && navbar.classList.contains('nav-hidden')) {
-            // Scrolling up
-            navbar.classList.remove('nav-hidden');
-            navbar.classList.add('nav-visible');
+        if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+            // Scrolling down past threshold - hide nav
+            navbar.style.transform = 'translateY(-100%)';
+        } else if (currentScroll < lastScroll) {
+            // Scrolling up - show nav
+            navbar.style.transform = 'translateY(0)';
         }
         
         lastScroll = currentScroll;
     });
 </script>
+
 
 
 
